@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통합 가이드 (2페이지 구성)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bloom: { 50: '#fff0f0', 100: '#ffdddd', 300: '#ffb7b2', 800: '#cc5a55' },
+                        sprout: { 50: '#f6fbf4', 100: '#eaf5e6', 300: '#c5e3ba', 800: '#5a824e' },
+                        cream: { 50: '#faf9f6', 100: '#f2f0e6', 800: '#2d2b26' },
+                        sand: { 50: '#FAF9F6', 100: '#F4F1E1', 200: '#E8E1C8', 800: '#6B6246' },
+                        sage: { 50: '#F0F4F1', 100: '#DDE7DF', 500: '#799480', 700: '#556B5A', 800: '#435548', 900: '#2D3A31' }
+                    },
+                    fontFamily: {
+                        serif: ['"Nanum Myeongjo"', '"Noto Serif KR"', 'serif'],
+                        sans: ['Pretendard', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        body {
+            background-color: #f3f4f6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-1 {
+            page-break-after: always;
+        }
+        
+        .skin-page { padding: 12mm 12mm; color: #2d2b26; }
+        .ceo-page { padding: 15mm 10mm; background-color: #FAF9F6; color: #2D3A31; }
+        
+        .chart-wrapper-skin { position: relative; height: 155px; width: 100%; }
+        .chart-wrapper-ceo { position: relative; width: 100%; height: 280px; }
+
+        @media print {
+            body { background: none; padding: 0; gap: 0; }
+            .page { box-shadow: none; margin: 0; border: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none; }
+            .ceo-page { background-color: #FAF9F6 !important; }
+            .bg-sage-900 { background-color: #2D3A31 !important; }
+        }
+
+        .water-glass {
+            width: 30px; height: 38px; border: 2px solid #cbd5e1;
+            border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
+            display: flex; align-items: center; justify-content: center; font-size: 15px;
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <button onclick="window.print()" class="no-print fixed top-5 right-5 bg-gray-900 text-white px-6 py-3 rounded-full shadow-2xl font-black hover:scale-105 transition-transform z-50 text-sm">
+        📄 양면 인쇄 (총 2장)
+    </button>
+
+    <!-- PAGE 1: 봄철 피부관리 가이드 -->
+    <div class="page page-1 skin-page">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-bloom-300 via-sprout-300 to-bloom-300"></div>
+        <header class="text-center mb-6">
+            <span class="text-bloom-800 font-black tracking-[0.4em] text-[10px] mb-1 block uppercase">Seasonal Skincare Guide</span>
+            <h1 class="text-4xl font-serif font-black mb-2 leading-tight">봄철 피부관리 핵심 가이드</h1>
+            <p class="text-lg text-sprout-800 font-serif font-black border-y-2 border-cream-100 py-1 inline-block px-10 mb-4">"건강한 광채를 위한 전략"</p>
+            <p class="text-[13px] font-medium leading-relaxed text-gray-700 max-w-2xl mx-auto px-4">
+                봄은 환절기 건조함과 자외선으로 인해 <b>피부 장벽이 무너지기 쉬운 계절</b>입니다.
+            </p>
+        </header>
+
+        <section class="mb-6">
+            <div class="bg-cream-50 p-5 rounded-[2rem] border-2 border-cream-100 shadow-sm">
+                <h2 class="text-xl font-serif font-black mb-4 px-2">왜 봄철 관리가 특별해야 할까요?</h2>
+                <div class="flex flex-row items-center gap-6">
+                    <div class="w-1/2 px-2">
+                        <h3 class="text-[14px] font-black mb-2 flex items-center gap-2">📊 환경 스트레스 지수</h3>
+                        <ul class="space-y-2">
+                            <li class="bg-white px-4 py-2 rounded-xl text-[11px] border border-gray-100 flex justify-between items-center shadow-sm">
+                                <strong class="font-black">자외선 (UV)</strong> <span class="text-bloom-800 font-black">2~3배 급증</span>
+                            </li>
+                            <li class="bg-white px-4 py-2 rounded-xl text-[11px] border border-gray-100 flex justify-between items-center shadow-sm">
+                                <strong class="font-black">미세먼지</strong> <span class="text-sprout-800 font-black">고농도 침투</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 bg-white p-4 rounded-3xl shadow-sm">
+                        <div class="chart-wrapper-skin"><canvas id="stressChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-6">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-[2rem] border-2 border-bloom-100 text-center shadow-md">
+                    <h3 class="text-[14px] font-black mb-3">봄철 피부관리 3대 핵심</h3>
+                    <div class="chart-wrapper-skin h-[130px]"><canvas id="balanceChart"></canvas></div>
+                    <p class="font-serif italic text-bloom-800 font-black text-[14px] mt-4">"비움 + 채움 + 방어"</p>
+                </div>
+                <div class="bg-sprout-50 p-5 rounded-[2rem] border-2 border-sprout-100 shadow-md">
+                    <h3 class="text-[14px] font-black mb-2">🍏 이너 뷰티 실천</h3>
+                    <p class="text-[11px] font-bold text-gray-600 mb-3 leading-tight">속부터 차오르는 수분 밸런스</p>
+                    <div class="bg-white p-3 rounded-2xl border-2 border-sprout-200 shadow-inner mt-auto">
+                        <h4 class="text-[11px] font-black mb-3 text-center text-sprout-800">💧 일일 수분 섭취 (2L)</h4>
+                        <div class="flex justify-between px-1">
+                            <div class="water-glass">🥛</div><div class="water-glass">🥛</div><div class="water-glass">🥛</div><div class="water-glass">🥛</div>
+                            <div class="water-glass">🥛</div><div class="water-glass">🥛</div><div class="water-glass">🥛</div><div class="water-glass">🥛</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex-grow flex flex-col justify-center border-t-2 border-dashed border-gray-100 mt-4 pt-6 text-center">
+            <p class="text-[14px] font-bold leading-relaxed text-gray-700 italic mb-6">
+                "작은 실천이 모여 당신의 봄날 광채를 완성합니다."
+            </p>
+            <div class="inline-block self-center px-10 py-4 bg-bloom-50 rounded-full border-2 border-bloom-100">
+                <span class="text-bloom-800 font-black text-[14px] tracking-[0.2em]">EMPTY, FILL, PROTECT.</span>
+            </div>
+        </section>
+        <footer class="mt-auto pt-6 text-center pb-4">
+            <p class="text-[10px] text-gray-400 font-black tracking-[0.3em] uppercase">&copy; 2024 Seasonal Skincare Analysis Report</p>
+        </footer>
+    </div>
+
+    <!-- PAGE 2: CEO 마인드 케어 가이드 (첨부 이미지 디자인 적용) -->
+    <div class="page page-2 ceo-page">
+        <header class="text-center mb-6 pt-4">
+            <span class="text-sage-500 font-black tracking-[0.3em] uppercase text-[10px] mb-1 block">CEO Mental Care Strategy</span>
+            <h1 class="text-[2.4rem] font-serif font-black text-sage-900 mb-2 leading-tight">결정의 무게를 견디는<br>당신을 위한 가이드</h1>
+            <div class="w-12 h-[3px] bg-sage-500 mx-auto rounded-full"></div>
+        </header>
+
+        <!-- 상단 3개 카드 섹션 -->
+        <section class="grid grid-cols-3 gap-4 mb-8">
+            <div class="bg-white p-5 rounded-[1.5rem] border border-sand-200 shadow-sm text-center flex flex-col items-center">
+                <div class="text-2xl mb-3">⚖️</div>
+                <h3 class="text-[14px] font-black text-sage-900 mb-2">나와 성과 분리</h3>
+                <p class="text-[10px] font-medium leading-relaxed text-gray-500">사업의 숫자가 당신의 본질적 가치를 증명하지 않습니다. 성과는 전략의 결과일 뿐입니다.</p>
+            </div>
+            <div class="bg-white p-5 rounded-[1.5rem] border border-sand-200 shadow-sm text-center flex flex-col items-center">
+                <div class="text-2xl mb-3">🔋</div>
+                <h3 class="text-[14px] font-black text-sage-900 mb-2">결정 피로 관리</h3>
+                <p class="text-[10px] font-medium leading-relaxed text-gray-500">사소한 선택을 루틴화하여 뇌를 보호하세요. 중요한 결정에 최상의 에너지를 쏟아야 합니다.</p>
+            </div>
+            <div class="bg-white p-5 rounded-[1.5rem] border border-sand-200 shadow-sm text-center flex flex-col items-center">
+                <div class="text-2xl mb-3">🌿</div>
+                <h3 class="text-[14px] font-black text-sage-900 mb-2">전략적 오프라인</h3>
+                <p class="text-[10px] font-medium leading-relaxed text-gray-500">짧은 단절은 낭비가 아닌 투자입니다. 고요함 속에서만 비로소 새로운 해결책이 떠오릅니다.</p>
+            </div>
+        </section>
+
+        <!-- 다크 배경의 에너지 분배 모델 섹션 (image_06af8d 디자인 반영) -->
+        <section class="bg-sage-900 rounded-[2.5rem] p-10 text-sand-50 shadow-xl flex flex-col items-center flex-grow mb-6">
+            <h2 class="text-[1.4rem] font-serif font-black mb-3 border-b border-sage-700 pb-2 px-8">이상적인 에너지 분배 모델</h2>
+            <div class="w-full max-w-sm h-[1px] bg-sage-700/50 mb-4"></div>
+            <p class="text-[11px] font-medium text-sage-100 opacity-90 mb-8 text-center max-w-xs leading-relaxed">
+                지속 가능한 리더심을 위해 실무 비중을 줄이고<br>의도적인 회복 시간을 확보하는 것이 핵심입니다.
+            </p>
+            
+            <!-- 차트 영역 -->
+            <div class="chart-wrapper-ceo mb-8"><canvas id="ceoEnergyChart"></canvas></div>
+            
+            <!-- 하단 범례 (이미지와 동일한 색상 및 원형 도트 적용) -->
+            <div class="grid grid-cols-2 gap-x-12 gap-y-4 w-full px-8 max-w-md">
+                <div class="flex items-center text-[12px] font-bold text-white/95">
+                    <span class="w-3 h-3 rounded-full bg-[#8E9F8F] mr-3"></span> 핵심 실무 (45%)
+                </div>
+                <div class="flex items-center text-[12px] font-bold text-white/95">
+                    <span class="w-3 h-3 rounded-full bg-[#4A5D4E] mr-3"></span> 전략 결정 (25%)
+                </div>
+                <div class="flex items-center text-[12px] font-bold text-white/95">
+                    <span class="w-3 h-3 rounded-full bg-[#D4C4A8] mr-3"></span> 마인드 루틴 (20%)
+                </div>
+                <div class="flex items-center text-[12px] font-bold text-white/95">
+                    <span class="w-3 h-3 rounded-full bg-[#F5F2EA] mr-3"></span> 오프라인 휴식 (10%)
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-auto py-4 border-t border-sand-200 flex justify-between items-center text-sage-500">
+            <p class="text-[1.1rem] font-serif italic text-sage-900 font-black">"당신의 평온이 곧 경쟁력입니다."</p>
+            <p class="text-[9px] tracking-widest uppercase font-black opacity-60">CEO Mind Care Seminar</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Chart.defaults.font.family = 'Pretendard';
+            Chart.defaults.font.weight = '700';
+
+            // 페이지 1: 스트레스 지수
+            new Chart(document.getElementById('stressChart'), {
+                type: 'radar',
+                data: {
+                    labels: ['자외선', '미세먼지', '건조함', '일교차', '피지'],
+                    datasets: [{
+                        data: [95, 85, 75, 90, 65],
+                        backgroundColor: 'rgba(204, 90, 85, 0.2)',
+                        borderColor: '#cc5a55',
+                        borderWidth: 2
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { r: { pointLabels: { font: { size: 9, weight: '900' } }, ticks: { display: false } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // 페이지 1: 피부 밸런스
+            new Chart(document.getElementById('balanceChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['비움', '채움', '방어'],
+                    datasets: [{ data: [30, 40, 30], backgroundColor: ['#94c982', '#ff8a84', '#e2e8f0'] }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false, cutout: '65%',
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 9 } } } }
+                }
+            });
+
+            // 페이지 2: CEO 에너지 분배 (image_06af8d 기반 색상)
+            new Chart(document.getElementById('ceoEnergyChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['전략 결정', '핵심 실무', '마인드 루틴', '오프라인 휴식'],
+                    datasets: [{
+                        data: [25, 45, 20, 10],
+                        backgroundColor: [
+                            '#4A5D4E', // 전략 결정 (다크 그린)
+                            '#8E9F8F', // 핵심 실무 (세이지)
+                            '#D4C4A8', // 마인드 루틴 (샌드)
+                            '#F5F2EA'  // 오프라인 휴식 (오프 화이트)
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '74%',
+                    rotation: 0,
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: { 
+                            enabled: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
